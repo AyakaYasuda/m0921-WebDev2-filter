@@ -7,8 +7,6 @@ async function getData() {
   const response = await fetch(API_URL);
   const { results } = await response.json();
 
-  console.log(results);
-
   //clear result
   result.innerHTML = '';
 
@@ -18,7 +16,6 @@ async function getData() {
   // event handler on search
   searchInput.addEventListener('keydown', e => {
     let inputChar = e.target.value.toLowerCase();
-    console.log(inputChar);
 
     if (!inputChar) return;
     const filteredResults = filterData(results, inputChar);
@@ -52,10 +49,8 @@ const filterData = (results, input) => {
       result.name.last.toLowerCase() +
       result.location.state.toLowerCase() +
       result.location.country.toLowerCase();
-    console.log(resultStr);
 
     return resultStr.includes(input);
   });
-  console.log(filteredData);
   return filteredData;
 };
